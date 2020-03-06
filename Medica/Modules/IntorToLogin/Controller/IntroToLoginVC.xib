@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IntroToLoginVC" customModule="Medica" customModuleProvider="target">
+            <connections>
+                <outlet property="loginBtn" destination="emx-YP-cdM" id="x91-Z5-fvK"/>
+                <outlet property="medicaCardBtn" destination="l2S-Zy-SFw" id="Ezn-Hz-CI4"/>
+                <outlet property="signupBtn" destination="NHG-OR-TiH" id="uPu-U0-vez"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="medica-logo" translatesAutoresizingMaskIntoConstraints="NO" id="H3F-5e-Had">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Gm3-ZS-eAh">
+                    <rect key="frame" x="40" y="340" width="334" height="190"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emx-YP-cdM" customClass="RoundedButton" customModule="Medica" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="JKI-un-wQ7"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <state key="normal" title="Login">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="loginDidPressed:" destination="-1" eventType="touchUpInside" id="UjJ-ZO-Y0i"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHG-OR-TiH" customClass="RoundedButton" customModule="Medica" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="70" width="334" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="Ggy-IW-JSk"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <state key="normal" title="Sign up">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="signUpDidPressed:" destination="-1" eventType="touchUpInside" id="Xgl-Uc-cL2"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l2S-Zy-SFw" customClass="RoundedButton" customModule="Medica" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="140" width="334" height="50"/>
+                            <color key="backgroundColor" red="0.96487480401992798" green="0.47207295894622803" blue="0.15878325700759888" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <state key="normal" title="Signup with medica card">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="H3F-5e-Had" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6mr-le-7xa"/>
+                <constraint firstItem="H3F-5e-Had" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="AiA-2n-kmv"/>
+                <constraint firstItem="Gm3-ZS-eAh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="Am3-6a-hSi"/>
+                <constraint firstItem="Gm3-ZS-eAh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="320" id="hhc-aR-40L"/>
+                <constraint firstAttribute="bottom" secondItem="H3F-5e-Had" secondAttribute="bottom" id="jFB-FK-BRc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Gm3-ZS-eAh" secondAttribute="trailing" constant="40" id="kF6-jb-WJP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="H3F-5e-Had" secondAttribute="trailing" id="o8n-5M-DBh"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="137.68115942028987" y="134.5108695652174"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="medica-logo" width="307" height="574"/>
+    </resources>
+</document>
