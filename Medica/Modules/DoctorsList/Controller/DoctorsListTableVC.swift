@@ -9,6 +9,8 @@
 import UIKit
 import CoreLocation
 class DoctorsListTableVC: UITableViewController {
+    var doctorsData : Doctors?
+    
     lazy var hideNavButton: UIBarButtonItem = {
         return UIBarButtonItem(title: "Hide", style: .done, target: self, action: #selector(dismissDoctorListView))
     }()
@@ -37,32 +39,51 @@ class DoctorsListTableVC: UITableViewController {
         navigationItem.setLeftBarButton(hideNavButton, animated: true)
         let cell = UINib(nibName: "DoctorsTableViewCell", bundle: nil)
         tableView.register(cell.self, forCellReuseIdentifier: "UITabelViewCell")
-        
+        loadData()
     }
+    
+    
+    
+    func loadData(){
+        if let path = Bundle.main.path(forResource: "doctors.listt", ofType: "json"){
+            do {
+                let data = try Data(contentsOf: URL.init(fileURLWithPath: path), options: .mappedIfSafe)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                doctorsData = try decoder.decode(Doctors.self, from: data)
+                tableView.reloadData()
+            }
+            catch {
+                print(error)
+            }
+        }
+    }
+
+    
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return doctorsLocations.count
+        return doctorsData?.count ?? 0
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let doctorData = doctorsLocations[indexPath.row]
+        let myDoctorsData = doctorsData?[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITabelViewCell", for: indexPath) as! DoctorsTableViewCell
-        cell.drName.text = doctorData.title
+        cell.drName.text = myDoctorsData?.message
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedDoctor = doctorsLocations[indexPath.row]
-        let vc = DoctorDetailsVC()
-        vc.drName = selectedDoctor.title ?? ""
-        vc.drDecipline = selectedDoctor.discipline
-        vc.lat = selectedDoctor.coordinate.latitude
-        vc.lon = selectedDoctor.coordinate.longitude
-        present(vc, animated: true, completion: nil)
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let selectedDoctor = doctorsData[indexPath.row]
+//        let vc = DoctorDetailsVC()
+//        vc.drName = selectedDoctor.title
+//        vc.drDecipline = selectedDoctor.address
+//        vc.lat = selectedDoctor.lat
+//        vc.lon = selectedDoctor.lng
+//        present(vc, animated: true, completion: nil)
+//    }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
