@@ -71,6 +71,7 @@ class DoctorsListTableVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let myDoctorsData = doctorsData?[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITabelViewCell", for: indexPath) as! DoctorsTableViewCell
+        
         cell.drName.text = myDoctorsData?.message
         return cell
     }
