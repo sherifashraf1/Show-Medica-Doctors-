@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 class DoctorsListTableVC: UITableViewController {
-    var doctorsData : Doctors?
+    var doctorsData : Doctors = []
     
     lazy var hideNavButton: UIBarButtonItem = {
         return UIBarButtonItem(title: "Hide", style: .done, target: self, action: #selector(dismissDoctorListView))
@@ -64,15 +64,17 @@ class DoctorsListTableVC: UITableViewController {
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return doctorsData?.count ?? 0
+
+        return doctorsData.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let myDoctorsData = doctorsData?[indexPath.row]
+        let myDoctorsData = doctorsData[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITabelViewCell", for: indexPath) as! DoctorsTableViewCell
-        
-        cell.drName.text = myDoctorsData?.message
+        for i in (myDoctorsData.item.data) {
+            cell.drName.text = i.address
+        }
         return cell
     }
     
