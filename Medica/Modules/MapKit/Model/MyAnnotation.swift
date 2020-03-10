@@ -10,9 +10,8 @@ import Foundation
 import MapKit
 
 class MyAnnotation : NSObject , MKAnnotation {
-    var index = 0
     var title : String?
-    var institution_title : String
+    var institutionTitle : String
     var annotDescription : String
     var specialty, price : String
     var address : String
@@ -21,7 +20,7 @@ class MyAnnotation : NSObject , MKAnnotation {
     
     
     init(title: String,
-         institution_title: String,
+         institutionTitle: String,
          annotDescription: String,
          specialty: String,
          price: String,
@@ -31,7 +30,7 @@ class MyAnnotation : NSObject , MKAnnotation {
         )
     {
         self.title = title
-        self.institution_title = institution_title
+        self.institutionTitle = institutionTitle
         self.annotDescription = annotDescription
         self.specialty = specialty
         self.price = price

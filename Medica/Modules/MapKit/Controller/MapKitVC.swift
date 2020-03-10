@@ -88,7 +88,7 @@ class MapKitVC: UIViewController  {
                     for i in self.arrDoctorsData{
                         self.initialLat = Double(i.lat)!
                         self.initialLng = Double(i.lng)!
-                        let docAnnotationData = MyAnnotation(title: i.title, institution_title: i.institution_title, annotDescription: i.description, specialty: i.specialty, price: i.price, address: i.address, image: i.image, coordinate: CLLocationCoordinate2DMake(CLLocationDegrees(i.lat)! ,CLLocationDegrees(i.lng)!))
+                        let docAnnotationData = MyAnnotation(title: i.title, institutionTitle: i.institutionTitle, annotDescription: i.description, specialty: i.specialty, price: i.price, address: i.address, image: i.image, coordinate: CLLocationCoordinate2DMake(CLLocationDegrees(i.lat)! ,CLLocationDegrees(i.lng)!))
                         self.doc.append(docAnnotationData)
                     }
                     self.showDoctors()

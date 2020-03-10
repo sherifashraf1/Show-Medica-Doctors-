@@ -45,7 +45,7 @@ class DoctorsListTableVC: UITableViewController {
         let vc = DoctorDetailsVC()
         vc.drName = selectedDoctor.title
         vc.drAddress = selectedDoctor.address
-        vc.drInstitution = selectedDoctor.institution_title
+        vc.drInstitution = selectedDoctor.institutionTitle
         vc.drDescription = selectedDoctor.description
         vc.drSpeciality = selectedDoctor.specialty
         vc.drPrice = selectedDoctor.price
