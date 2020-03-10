@@ -7,9 +7,8 @@
 //
 
 import Foundation
-
 enum StaticAPIsUrls : String {
     case apiRegisterUrl = "http://medicahealthy.net/api/auth-client/register"
     case apiLoginUrl    = "http://medicahealthy.net/api/auth-client/login"
-    case drsURl         = "http://medicahealthy.net/api/institutions?lat=31.222229&lng=29.949358"
+    case drsURl         = "http://medicahealthy.net/api/institutions"
 }

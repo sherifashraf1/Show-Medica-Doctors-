@@ -59,6 +59,10 @@ class DoctorsListTableVC: UITableViewController {
     }
     
     func loadData() {
+        let params : [String : String] = [
+            "lat" : "31.222229",
+            "lng" : "29.949358"
+        ]
         let headers : HTTPHeaders = [
             "Content-Type" : "text/plain",
             "Accept" : "application/json",
@@ -68,7 +72,7 @@ class DoctorsListTableVC: UITableViewController {
         ]
         self.view.makeToastActivity(.center)
         AF.request(StaticAPIsUrls.drsURl.rawValue, method: .get
-            , parameters: nil, encoding: JSONEncoding.default, headers: headers, interceptor: nil).responseJSON { (response) in
+            , parameters: params, encoding: URLEncoding.default, headers: headers, interceptor: nil).responseJSON { (response) in
                 self.view.hideToastActivity()
                 do{
                     let doctors = try JSONDecoder().decode(DoctorsModel.self, from: response.data!)
