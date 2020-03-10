@@ -2,7 +2,7 @@
 //  DoctorsListing.swift
 //  Medica
 //
-//  Created by ALY on 3/9/20.
+//  Created by Sherif on 3/9/20.
 //  Copyright © 2020 Sherif. All rights reserved.
 //
 
