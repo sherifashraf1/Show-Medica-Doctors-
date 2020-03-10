@@ -8,7 +8,5 @@ target 'Medica' do
   # Pods for Medica
    pod 'Alamofire'
    pod 'Toast-Swift'
-   pod 'GooglePlaces'
-   pod 'GooglePlacePicker'
-   pod 'GoogleMaps'
+   
 end

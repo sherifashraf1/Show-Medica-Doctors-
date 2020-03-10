@@ -9,84 +9,99 @@
 import UIKit
 import CoreLocation
 class DoctorsListTableVC: UITableViewController {
-    var doctorsData : Doctors = []
     
+    var myDoctorsData : [ItemDatumList] = []
     lazy var hideNavButton: UIBarButtonItem = {
         return UIBarButtonItem(title: "Hide", style: .done, target: self, action: #selector(dismissDoctorListView))
     }()
     
     @objc func dismissDoctorListView(){
         dismiss(animated: true, completion: nil)
+        hideActivityIndicator()
+    }
+ 
+    var spinner: UIActivityIndicatorView?
+
+    func showActivityIndicator() {
+        spinner = UIActivityIndicatorView(style: .gray)
+        spinner?.color = .black
+        spinner?.center = self.view.center
+        spinner?.hidesWhenStopped = true
+        spinner?.scaleIndicator(factor: 2)
+        self.view.addSubview(spinner!)
+        spinner?.startAnimating()
     }
     
-    let doctorsLocations = [
-        MyAnnotation(title: "Dr Emad", locationName: "Cairo", discipline: "Psychiatrist and neurologist", coordinate: CLLocationCoordinate2DMake(31.19957787 ,29.908406)),
-        MyAnnotation(title: "Dr. Ali", locationName: "Makram Ebied", discipline: "Neurologists", coordinate: CLLocationCoordinate2DMake(31.19857786 ,29.907402)),
-        MyAnnotation(title: "Dr. Ahmed", locationName: "Nasr City", discipline: "Plastic surgeon", coordinate: CLLocationCoordinate2DMake(31.19748064 , 29.907410)),
-        MyAnnotation(title: "Dr. Hasssan", locationName: "Zamalek", discipline: "dermatologist", coordinate: CLLocationCoordinate2DMake(31.19648064 ,29.907420)),
-        MyAnnotation(title: "Dr. Omar", locationName: "New Cairo", discipline: "Medica Healthy Provider", coordinate: CLLocationCoordinate2DMake(31.19548064 ,29.907430)),
-        MyAnnotation(title: "Dr. Hussien", locationName: "New Cairo", discipline: "Medica Healthy Provider", coordinate: CLLocationCoordinate2DMake(31.19548064 ,29.907430)),
-        MyAnnotation(title: "Dr. Moahmed", locationName: "New Cairo", discipline: "Medica Healthy Provider", coordinate: CLLocationCoordinate2DMake(31.19548064 ,29.907430)),
-        MyAnnotation(title: "Dr. Ahmed", locationName: "New Cairo", discipline: "dermatologist", coordinate: CLLocationCoordinate2DMake(31.19548064 ,29.907430)),
-        MyAnnotation(title: "Dr. Ibrahim", locationName: "New Cairo", discipline: "Neurologists", coordinate: CLLocationCoordinate2DMake(31.19548064 ,29.907430)),
-        MyAnnotation(title: "Dr. Zeyad", locationName: "New Cairo", discipline: "Medica Healthy Provider", coordinate: CLLocationCoordinate2DMake(31.19548064 ,29.907430)),
-        MyAnnotation(title: "Dr. SHerif", locationName: "New Cairo", discipline: "Medica Healthy Provider", coordinate: CLLocationCoordinate2DMake(31.19548064 ,29.907430)),
-        MyAnnotation(title: "Dr. Mahmoud", locationName: "New Cairo", discipline: "Medica Healthy Provider", coordinate: CLLocationCoordinate2DMake(31.19548064 ,29.907430))
-    ]
+     func hideActivityIndicator(){
+        if (spinner != nil){
+            spinner?.stopAnimating()
+
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Doctors List"
         navigationItem.setLeftBarButton(hideNavButton, animated: true)
+        showActivityIndicator()
         let cell = UINib(nibName: "DoctorsTableViewCell", bundle: nil)
         tableView.register(cell.self, forCellReuseIdentifier: "UITabelViewCell")
-        loadData()
-    }
-    
-    
-    
-    func loadData(){
-        if let path = Bundle.main.path(forResource: "doctors.listt", ofType: "json"){
-            do {
-                let data = try Data(contentsOf: URL.init(fileURLWithPath: path), options: .mappedIfSafe)
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                doctorsData = try decoder.decode(Doctors.self, from: data)
-                tableView.reloadData()
-            }
-            catch {
-                print(error)
-            }
-        }
+        doctorsDataGet(){}
     }
 
-    
-    
-    // MARK: - Table view data source
+    func doctorsDataGet(completed:()->())  {
+        
+        guard let  url = URL(string: "http://medicahealthy.net/api/institutions?lat=31.222229&lng=29.949358") else { return  }
+        var request = URLRequest(url: url)
+        request.addValue("text/plain", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("c213348c8e34e7dd", forHTTPHeaderField: "From")
+        request.addValue("android", forHTTPHeaderField: "User-Agent")
+        request.addValue("en", forHTTPHeaderField: "Accept-Language")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if error == nil{
+                do{
+                    let root = try JSONDecoder().decode(DoctorsModel.self, from: data!)
+
+                    DispatchQueue.main.async {
+                        self.hideActivityIndicator()
+                        for doctor in root.item.data{
+                            self.myDoctorsData.append(doctor)
+                        }
+                        print("arrDoctorsData: \(self.myDoctorsData)")
+                        self.tableView.reloadData()
+                    }
+                    
+                }catch {
+                    print("error",error)
+                }
+            }
+            }.resume()
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-
-        return doctorsData.count
+        return myDoctorsData.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let myDoctorsData = doctorsData[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITabelViewCell", for: indexPath) as! DoctorsTableViewCell
-        for i in (myDoctorsData.item.data) {
-            cell.drName.text = i.address
-        }
+        cell.drName.text = myDoctorsData[indexPath.row].title
         return cell
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let selectedDoctor = doctorsData[indexPath.row]
-//        let vc = DoctorDetailsVC()
-//        vc.drName = selectedDoctor.title
-//        vc.drDecipline = selectedDoctor.address
-//        vc.lat = selectedDoctor.lat
-//        vc.lon = selectedDoctor.lng
-//        present(vc, animated: true, completion: nil)
-//    }
+        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let selectedDoctor = myDoctorsData[indexPath.row]
+            let vc = DoctorDetailsVC()
+            vc.drName = selectedDoctor.title
+            vc.drAddress = selectedDoctor.address
+            vc.drInstitution = selectedDoctor.institution_title
+            vc.drDescription = selectedDoctor.description
+            vc.drSpeciality = selectedDoctor.specialty
+            vc.drPrice = selectedDoctor.price
+            present(vc, animated: true, completion: nil)
+        }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100

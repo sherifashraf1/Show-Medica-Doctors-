@@ -1,40 +1,34 @@
 //
-//  DoctorDetailsVC.swift
+//  AnnotDetails.swift
 //  Medica
 //
-//  Created by Sherif on 3/5/20.
+//  Created by Sherif on 3/10/20.
 //  Copyright © 2020 Sherif. All rights reserved.
 //
 
 import UIKit
 
-class DoctorDetailsVC: UIViewController {
+class AnnotDetails: UIViewController {
     @IBOutlet weak var doctorName: UILabel!
     @IBOutlet weak var doctorAddress: UILabel!
-    @IBOutlet weak var doctorInstitution: UILabel!
-    @IBOutlet weak var doctorDescription: UILabel!
-    @IBOutlet weak var doctorSpeciality: UILabel!
-    @IBOutlet weak var doctorPrice: UILabel!
+    @IBOutlet weak var doctorCoord: UILabel!
     
     var drName = ""
-    var drAddress = ""
-    var drInstitution = ""
-    var drDescription = ""
-    var drSpeciality = ""
-    var drPrice = ""
+    var drAddres = ""
+    var lat = 0.0
+    var lon = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        doctorName.text = drName
+        doctorAddress.text = drAddres
+        doctorCoord.text = "\(lat) , \(lon)"
+        // Do any additional setup after loading the view.
         dragUpView()
         dragDownView()
-        doctorName.text = drName
-        doctorAddress.text = drAddress
-        doctorInstitution.text = drInstitution
-        doctorDescription.text = drDescription
-        doctorSpeciality.text = drSpeciality
-        doctorPrice.text = drPrice
-        
     }
-    
+
     
     func dragUpView(){
         let slideUp = UISwipeGestureRecognizer(target: self, action: #selector(dragViewFromTop(gesture:)))
@@ -81,6 +75,6 @@ class DoctorDetailsVC: UIViewController {
         }
     }
     
-    
+
 
 }

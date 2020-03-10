@@ -10,19 +10,37 @@ import Foundation
 import MapKit
 
 class MyAnnotation : NSObject , MKAnnotation {
-    let title : String?
-    let locationName : String
-    let discipline : String
-    let coordinate : CLLocationCoordinate2D
+    var index = 0
+    var title : String?
+    var institution_title : String
+    var annotDescription : String
+    var specialty, price : String
+    var address : String
+    var image: String
+    var coordinate : CLLocationCoordinate2D
     
-    init(title : String , locationName : String , discipline : String , coordinate : CLLocationCoordinate2D) {
+    
+    init(title: String,
+         institution_title: String,
+         annotDescription: String,
+         specialty: String,
+         price: String,
+         address: String,
+         image: String ,
+         coordinate : CLLocationCoordinate2D
+        )
+    {
         self.title = title
-        self.locationName = locationName
-        self.discipline = discipline
+        self.institution_title = institution_title
+        self.annotDescription = annotDescription
+        self.specialty = specialty
+        self.price = price
+        self.address = address
+        self.image = image
         self.coordinate = coordinate
         super.init()
     }
-    var subTitle : String? {
-        return locationName
-    }
+//    var subTitle : String? {
+//        return institution_title
+//    }
 }

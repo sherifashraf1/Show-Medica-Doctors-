@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04298BD2241686C800EA9258 /* DoctorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04298BD1241686C800EA9258 /* DoctorsModel.swift */; };
 		15BA5B9F8E994E0D08906B4A /* Pods_Medica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAF09415B459708D8CC1716 /* Pods_Medica.framework */; };
 		E00A971E240EF2B10096900C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00A971D240EF2B10096900C /* AppDelegate.swift */; };
 		E00A9725240EF2B20096900C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E00A9724240EF2B20096900C /* Assets.xcassets */; };
@@ -30,8 +31,10 @@
 		E027EBC62410A82900212B7E /* DoctorDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E027EBC42410A82900212B7E /* DoctorDetailsVC.xib */; };
 		E027EBCA2410BC9100212B7E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E027EBC92410BC9100212B7E /* Media.xcassets */; };
 		E0281A17240F7B060042C1A3 /* ApiUrl + Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0281A16240F7B060042C1A3 /* ApiUrl + Keys.swift */; };
-		E0B563E22415C87E00C0B8A2 /* DoctorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B563E12415C87E00C0B8A2 /* DoctorsModel.swift */; };
-		E0B563E42415C93100C0B8A2 /* doctors.list.json in Resources */ = {isa = PBXBuildFile; fileRef = E0B563E32415C93100C0B8A2 /* doctors.list.json */; };
+		E0A5646024170A140008560F /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A5645F24170A140008560F /* AnnotationView.swift */; };
+		E0A56468241730230008560F /* AnnotDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A56466241730230008560F /* AnnotDetails.swift */; };
+		E0A56469241730230008560F /* AnnotDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A56467241730230008560F /* AnnotDetails.xib */; };
+		E0A8B72B241742D0000FDEE7 /* ActivityIndicator + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8B72A241742D0000FDEE7 /* ActivityIndicator + extension.swift */; };
 		E0E6CCEB240F70BF00EF8F61 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E6CCEA240F70BF00EF8F61 /* Reachability.swift */; };
 		E0FBA1D5241156E800F50413 /* MapFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FBA1D4241156E800F50413 /* MapFactory.swift */; };
 		E0FBA1D924115A0500F50413 /* DoctorsListTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FBA1D724115A0500F50413 /* DoctorsListTableVC.swift */; };
@@ -42,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04298BD1241686C800EA9258 /* DoctorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorsModel.swift; sourceTree = "<group>"; };
 		539F273B414EA6B423E25C78 /* Pods-Medica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Medica.debug.xcconfig"; path = "Target Support Files/Pods-Medica/Pods-Medica.debug.xcconfig"; sourceTree = "<group>"; };
 		73D5ED5E822AD255A19E8014 /* Pods-Medica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Medica.release.xcconfig"; path = "Target Support Files/Pods-Medica/Pods-Medica.release.xcconfig"; sourceTree = "<group>"; };
 		9CAF09415B459708D8CC1716 /* Pods_Medica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Medica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,8 +73,10 @@
 		E027EBC42410A82900212B7E /* DoctorDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoctorDetailsVC.xib; sourceTree = "<group>"; };
 		E027EBC92410BC9100212B7E /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		E0281A16240F7B060042C1A3 /* ApiUrl + Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiUrl + Keys.swift"; sourceTree = "<group>"; };
-		E0B563E12415C87E00C0B8A2 /* DoctorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorsModel.swift; sourceTree = "<group>"; };
-		E0B563E32415C93100C0B8A2 /* doctors.list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = doctors.list.json; sourceTree = "<group>"; };
+		E0A5645F24170A140008560F /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
+		E0A56466241730230008560F /* AnnotDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotDetails.swift; sourceTree = "<group>"; };
+		E0A56467241730230008560F /* AnnotDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnotDetails.xib; sourceTree = "<group>"; };
+		E0A8B72A241742D0000FDEE7 /* ActivityIndicator + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityIndicator + extension.swift"; sourceTree = "<group>"; };
 		E0E6CCEA240F70BF00EF8F61 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E0FBA1D4241156E800F50413 /* MapFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFactory.swift; sourceTree = "<group>"; };
 		E0FBA1D724115A0500F50413 /* DoctorsListTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorsListTableVC.swift; sourceTree = "<group>"; };
@@ -177,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				E00A974F240F24BD0096900C /* Extension Button + TextField.swift */,
+				E0A8B72A241742D0000FDEE7 /* ActivityIndicator + extension.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -255,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				E027EBD22410D1EA00212B7E /* Model */,
+				E0A5646124170DB40008560F /* View */,
 				E0209A542411714300E6AE69 /* Factory */,
 				E027EBD32410D1F600212B7E /* Controller */,
 				E027EBC92410BC9100212B7E /* Media.xcassets */,
@@ -267,6 +275,8 @@
 			children = (
 				E027EBC32410A82900212B7E /* DoctorDetailsVC.swift */,
 				E027EBC42410A82900212B7E /* DoctorDetailsVC.xib */,
+				E0A56466241730230008560F /* AnnotDetails.swift */,
+				E0A56467241730230008560F /* AnnotDetails.xib */,
 			);
 			path = DoctorDetails;
 			sourceTree = "<group>";
@@ -275,8 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				E027EBB624106CDB00212B7E /* MyAnnotation.swift */,
-				E0B563E12415C87E00C0B8A2 /* DoctorsModel.swift */,
-				E0B563E32415C93100C0B8A2 /* doctors.list.json */,
+				04298BD1241686C800EA9258 /* DoctorsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -288,6 +297,14 @@
 				E027EBB924106E7A00212B7E /* MapKitVC.xib */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		E0A5646124170DB40008560F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E0A5645F24170A140008560F /* AnnotationView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		E0FBA1D6241159CF00F50413 /* DoctorsList */ = {
@@ -339,7 +356,6 @@
 				E00A9717240EF2B10096900C /* Frameworks */,
 				E00A9718240EF2B10096900C /* Resources */,
 				03BB5596CC849A844B2D8FFA /* [CP] Embed Pods Frameworks */,
-				E9EF5F04172EC191CE904027 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -391,8 +407,8 @@
 			files = (
 				E00A9745240F02620096900C /* LoginVC.xib in Resources */,
 				E027EBBB24106E7A00212B7E /* MapKitVC.xib in Resources */,
-				E0B563E42415C93100C0B8A2 /* doctors.list.json in Resources */,
 				E00A9728240EF2B20096900C /* LaunchScreen.storyboard in Resources */,
+				E0A56469241730230008560F /* AnnotDetails.xib in Resources */,
 				E00A974E240F1D460096900C /* Media.xcassets in Resources */,
 				E027EBC62410A82900212B7E /* DoctorDetailsVC.xib in Resources */,
 				E027EBCA2410BC9100212B7E /* Media.xcassets in Resources */,
@@ -448,23 +464,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E9EF5F04172EC191CE904027 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Medica/Pods-Medica-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Medica/Pods-Medica-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Medica/Pods-Medica-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -473,21 +472,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0FBA1D924115A0500F50413 /* DoctorsListTableVC.swift in Sources */,
+				04298BD2241686C800EA9258 /* DoctorsModel.swift in Sources */,
 				E027EBC52410A82900212B7E /* DoctorDetailsVC.swift in Sources */,
 				E027EBBA24106E7A00212B7E /* MapKitVC.swift in Sources */,
 				E0E6CCEB240F70BF00EF8F61 /* Reachability.swift in Sources */,
 				E0FBA1E12411664800F50413 /* DoctorsFactoryView.swift in Sources */,
 				E027EBB724106CDB00212B7E /* MyAnnotation.swift in Sources */,
 				E00A973D240EF6FC0096900C /* RoundedViews.swift in Sources */,
+				E0A5646024170A140008560F /* AnnotationView.swift in Sources */,
 				E0FBA1DE24115D3D00F50413 /* DoctorsTableViewCell.swift in Sources */,
+				E0A8B72B241742D0000FDEE7 /* ActivityIndicator + extension.swift in Sources */,
 				E00A9735240EF3E70096900C /* IntroToLoginVC.swift in Sources */,
 				E00A9750240F24BD0096900C /* Extension Button + TextField.swift in Sources */,
 				E0FBA1D5241156E800F50413 /* MapFactory.swift in Sources */,
 				E0281A17240F7B060042C1A3 /* ApiUrl + Keys.swift in Sources */,
-				E0B563E22415C87E00C0B8A2 /* DoctorsModel.swift in Sources */,
 				E00A9744240F02620096900C /* LoginVC.swift in Sources */,
 				E00A971E240EF2B10096900C /* AppDelegate.swift in Sources */,
 				E00A974B240F1CFD0096900C /* RegisterVC.swift in Sources */,
+				E0A56468241730230008560F /* AnnotDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

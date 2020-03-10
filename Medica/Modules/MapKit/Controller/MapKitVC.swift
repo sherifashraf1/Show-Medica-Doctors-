@@ -9,8 +9,12 @@
 import UIKit
 import MapKit
 
-class MapKitVC: UIViewController {
-    
+class MapKitVC: UIViewController  {
+    var arrDoctorsData : [ItemDatumList] = []
+    var myAnnot = [MyAnnotation]()
+    var initialLat:Double = 0.0
+    var initialLng:Double = 0.0
+ 
     lazy var hideNavButton: UIBarButtonItem = {
         return UIBarButtonItem(title: "Hide", style: .done, target: self, action: #selector(dismissMapView))
     }()
@@ -19,8 +23,24 @@ class MapKitVC: UIViewController {
         return UIBarButtonItem(title: "Doctors", style: .done, target: self, action: #selector(showDrInListView))
     }()
     
-    
     @IBOutlet weak var mapView: MKMapView!
+    var spinner: UIActivityIndicatorView?
+    func showActivityIndicator() {
+        spinner = UIActivityIndicatorView(style: .gray)
+        spinner?.color = .black
+        spinner?.center = self.view.center
+        spinner?.hidesWhenStopped = true
+        spinner?.scaleIndicator(factor: 2)
+        self.view.addSubview(spinner!)
+        spinner?.startAnimating()
+    }
+    
+    func hideActivityIndicator(){
+        if (spinner != nil){
+            spinner?.stopAnimating()
+            
+        }
+    }
     
     @objc func dismissMapView(){
         dismiss(animated: true, completion: nil)
@@ -29,42 +49,71 @@ class MapKitVC: UIViewController {
     @objc func showDrInListView(){
         let vc = DoctorsFactoryView.makeMapWithNavigate()
         present(vc, animated: true, completion: nil)
+
     }
     
-    let doctorsLocations = [
-        MyAnnotation(title: "Dr Emad", locationName: "Cairo", discipline: "Psychiatrist and neurologist", coordinate: CLLocationCoordinate2DMake(31.19957787 ,29.908406)),
-        MyAnnotation(title: "Dr. Ali", locationName: "Makram Ebied", discipline: "Neurologists", coordinate: CLLocationCoordinate2DMake(31.19857786 ,29.907402)),
-        MyAnnotation(title: "Dr. Ahmed", locationName: "Nasr City", discipline: "Plastic surgeon", coordinate: CLLocationCoordinate2DMake(31.19748064 , 29.907410)),
-        MyAnnotation(title: "Dr. Hasssan", locationName: "Zamalek", discipline: "dermatologist", coordinate: CLLocationCoordinate2DMake(31.19648064 ,29.907420)),
-        MyAnnotation(title: "Dr. Omar", locationName: "New Cairo", discipline: "Medica Healthy Provider", coordinate: CLLocationCoordinate2DMake(31.19548064 ,29.907430)),
-        MyAnnotation(title: "Dr. Hussien", locationName: "New Cairo", discipline: "Medica Healthy Provider", coordinate: CLLocationCoordinate2DMake(31.19948064 ,29.907440)),
-        MyAnnotation(title: "Dr. Moahmed", locationName: "New Cairo", discipline: "Medica Healthy Provider", coordinate: CLLocationCoordinate2DMake(31.19658064 ,29.907450)),
-        MyAnnotation(title: "Dr. Ahmed", locationName: "New Cairo", discipline: "dermatologist", coordinate: CLLocationCoordinate2DMake(31.19749064 ,29.907460)),
-        MyAnnotation(title: "Dr. Ibrahim", locationName: "New Cairo", discipline: "Neurologists", coordinate: CLLocationCoordinate2DMake(31.19158064 ,29.907470)),
-        MyAnnotation(title: "Dr. Zeyad", locationName: "New Cairo", discipline: "Medica Healthy Provider", coordinate: CLLocationCoordinate2DMake(31.19248074 ,29.907480)),
-        MyAnnotation(title: "Dr. SHerif", locationName: "New Cairo", discipline: "Medica Healthy Provider", coordinate: CLLocationCoordinate2DMake(31.19548070 ,29.907490)),
-        MyAnnotation(title: "Dr. Mahmoud", locationName: "New Cairo", discipline: "Medica Healthy Provider", coordinate: CLLocationCoordinate2DMake(31.19548169 ,29.907500))
-    ]
+ 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        hideActivityIndicator()
+    }
     
+    var doc:[MyAnnotation] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Map View"
+        showActivityIndicator()
         navigationItem.setLeftBarButton(hideNavButton, animated: true)
         navigationItem.setRightBarButton(showDrInListButton, animated: true)
         self.hideNavButton.tintColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
         self.showDrInListButton.tintColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapView.tintColor = .lightGray
         mapView.delegate = self
-        showDoctors()
-        let initialLocation = CLLocation(latitude: 31.19857787, longitude: 29.907406 )
-        centerMapOnLoaction(location: initialLocation)
-        
+        doctorsDataGet(){}
+    }
+    
+    func doctorsDataGet(completed:()->())  {
+        guard let  url = URL(string: "http://medicahealthy.net/api/institutions?lat=31.222229&lng=29.949358") else { return  }
+        var request = URLRequest(url: url)
+        request.addValue("text/plain", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("c213348c8e34e7dd", forHTTPHeaderField: "From")
+        request.addValue("android", forHTTPHeaderField: "User-Agent")
+        request.addValue("en", forHTTPHeaderField: "Accept-Language")
+            
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if error == nil{
+                    do{
+                        let doctorDetail = try JSONDecoder().decode(DoctorsModel.self, from: data!)
+                        DispatchQueue.main.async {
+                            self.hideActivityIndicator()
+                            for doctor in doctorDetail.item.data{
+                                self.arrDoctorsData.append(doctor)
+                            }
+                            for i in self.arrDoctorsData{
+                                self.initialLat = Double(i.lat)!
+                                self.initialLng = Double(i.lng)!
+                                let docAnnotationData = MyAnnotation(title: i.title, institution_title: i.institution_title, annotDescription: i.description, specialty: i.specialty, price: i.price, address: i.address, image: i.image, coordinate: CLLocationCoordinate2DMake(CLLocationDegrees(i.lat)! ,CLLocationDegrees(i.lng)!))
+                                self.doc.append(docAnnotationData)
+                            }
+                            self.showDoctors()
+                            let initialLocation = CLLocation(latitude: self.initialLat, longitude: self.initialLng )
+                            self.centerMapOnLoaction(location: initialLocation)
+                        }
+                        
+                        }catch {
+                        print("error",error)
+                    }
+                }
+            }.resume()
         
     }
     func showDoctors(){
-        for doctor in doctorsLocations {
+        for doctor in doc {
             let annotation = MKPointAnnotation()
             annotation.title = doctor.title
-            annotation.subtitle = doctor.discipline
+            annotation.subtitle = doctor.address
             annotation.coordinate = doctor.coordinate
             mapView.addAnnotation(annotation)
         }
@@ -82,21 +131,33 @@ extension MapKitVC : MKMapViewDelegate {
         if annotation is MKUserLocation {
             return nil
         }
+        let AnnotaionIdentifier = "AnnotationIdentifier"
+        var pin = mapView.dequeueReusableAnnotationView(withIdentifier: AnnotaionIdentifier)
+        if pin == nil {
+            pin = AnnotationView(annotation: annotation, reuseIdentifier: AnnotaionIdentifier)
+            pin?.canShowCallout = false
+        } else {
+            pin?.annotation = annotation
+        }
         
-        let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-        pin.canShowCallout = true
-        pin.image = UIImage(named: "ann-marker")
-        pin.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        pin?.canShowCallout = true
+        pin?.image = UIImage(named: "ann-marker")
+        pin?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         return pin
     }
-    
+   
+   
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
         let annotationView = view.annotation
-        let vc = DoctorDetailsVC()
+        let vc = AnnotDetails()
         vc.drName = ((annotationView?.title!)!)
-        vc.drDecipline = ((annotationView?.subtitle!)!)
+        vc.drAddres = ((annotationView?.subtitle!)!)
         vc.lat = (annotationView?.coordinate.latitude)!
         vc.lon = (annotationView?.coordinate.longitude)!
         present(vc, animated: true, completion: nil)
     }
+    
 }
+    
+
