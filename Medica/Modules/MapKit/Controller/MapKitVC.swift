@@ -53,7 +53,7 @@ class MapKitVC: UIViewController  {
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
-    func showDoctors(){
+   private func showDoctors(){
         for doctor in doc {
             let annotation = MKPointAnnotation()
             annotation.title = doctor.title
@@ -115,7 +115,6 @@ extension MapKitVC : MKMapViewDelegate {
         } else {
             pin?.annotation = annotation
         }
-        
         pin?.canShowCallout = true
         pin?.image = UIImage(named: "ann-marker")
         pin?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
