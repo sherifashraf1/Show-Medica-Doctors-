@@ -235,7 +235,7 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFT-aR-oHL">
-                    <rect key="frame" x="20" y="20" width="72" height="36"/>
+                    <rect key="frame" x="20" y="30" width="72" height="36"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                     <state key="normal" title="＜ Back">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -292,7 +292,7 @@
                 <constraint firstItem="IOg-hK-ZVf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="RcU-Ae-wf7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IOg-hK-ZVf" secondAttribute="trailing" constant="40" id="T1q-7m-VFU"/>
                 <constraint firstItem="jMq-6L-ii7" firstAttribute="centerY" secondItem="qdg-RF-VKj" secondAttribute="centerY" id="UQP-SV-4Se"/>
-                <constraint firstItem="AFT-aR-oHL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="WdX-5x-HFg"/>
+                <constraint firstItem="AFT-aR-oHL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="WdX-5x-HFg"/>
                 <constraint firstItem="hfu-2s-V45" firstAttribute="centerY" secondItem="vUo-iM-vsT" secondAttribute="centerY" id="XQl-lN-vyX"/>
                 <constraint firstItem="IOg-hK-ZVf" firstAttribute="top" secondItem="bK9-bP-oPg" secondAttribute="bottom" constant="20" id="Zhp-ad-nQa"/>
                 <constraint firstItem="4tI-TB-yXK" firstAttribute="leading" secondItem="vMw-6k-qZP" secondAttribute="trailing" constant="-25" id="a9l-XF-vya"/>

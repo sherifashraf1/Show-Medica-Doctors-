@@ -15,12 +15,8 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var emailTxtF: UITextField!
     @IBOutlet weak var passwordTxtF: UITextField!
     @IBOutlet weak var confirmPasswordTxtF: UITextField!
-    
     @IBOutlet weak var passBtn: UIButton!
     @IBOutlet weak var confirmPassBtn: UIButton!
-    
-    
-    var reachability : Reachability?
     
     fileprivate func setRightImageOnTextFields() {
         userNameTxtF.setRightImage(imageName: "username-icon")
@@ -99,8 +95,6 @@ class RegisterVC: UIViewController {
         
         if userNameTxtF.text != "" && emailTxtF.text != "" && phoneNumberTxtF.text != "" && passwordTxtF.text != "" && confirmPasswordTxtF.text != "" {
             //TODO call API
-            //apiCalling()
-            
             let vc = MapFfactory.makeMapWithNavigate()
             present(vc, animated: true, completion: nil)
             
@@ -113,84 +107,7 @@ class RegisterVC: UIViewController {
         
     }
     
-    
-    
-    func apiCalling () {
-        do{
-            try self.reachability = Reachability.init()
-        } catch {
-            debugPrint(error.localizedDescription)
-        }
-        if ((reachability!.connection) != .unavailable) {
-            self.view.makeToastActivity(.center)
-            let params = [
-                "name" : self.userNameTxtF.text!.trimmingCharacters(in: .whitespacesAndNewlines) as AnyObject,
-                "email" : self.emailTxtF.text!.trimmingCharacters(in: .whitespacesAndNewlines) as! AnyObject,
-                "mobile" : self.phoneNumberTxtF.text!.trimmingCharacters(in: .whitespacesAndNewlines) as! AnyObject,
-                "password" : self.passwordTxtF.text!.trimmingCharacters(in: .whitespacesAndNewlines) as! AnyObject,
-                "password_confirmation" : self.confirmPasswordTxtF.text!.trimmingCharacters(in: .whitespacesAndNewlines) as! AnyObject
-            ]
-            let headers : HTTPHeaders = [
-                "Content-Type" : "application/x-www-form-urlencoded",
-                "Authorizations" : "token",
-                "Accept" : "application/json",
-                "User-Agent" : "iphone",
-                "Accept-Language" : "ar"
-            ]
-            
-            let encodeURL = StaticAPIsUrls.apiRegisterUrl.rawValue
-            let request = AF.request(encodeURL, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers, interceptor: nil)
-            request.responseJSON { (response) in
-                print(response.request!)
-                print(response.result)
-                print(response.response )
-                
-                switch response.result {
-                case .success(let payload):
-                    self.view.hideAllToasts()
-                    if let payload = payload as? Dictionary<String , AnyObject> {
-                        print(payload)
-                        let resultValue = payload as NSDictionary
-                        let code = resultValue["result"] as! String
-                        let message = resultValue["message"] as! String
-                        
-                        if code == "1" {
-                            let data = resultValue["data"] as! NSDictionary
-//                            let token = resultValue["token"] as! String
-//                            let userId = data["id"] as! Int
-                            
-//                            UserDefaults.standard.set(userId, forKey: "UserId")
-//                            UserDefaults.standard.set("\(token)", forKey: "Authorizations")
-                            
-                        } else {
-                            let alert = UIAlertController(title: "Error", message: "\(message)", preferredStyle: .alert)
-                            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-                            alert.addAction(action)
-                            self.present(alert, animated: true, completion: nil)
-                        }
-                    }
-                    
-                case .failure(let error):
-                    debugPrint(error.localizedDescription)
-                    
-                    let alert = UIAlertController(title: "Error", message: "App cannot connect to server!!", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-                    alert.addAction(action)
-                    self.present(alert, animated: true, completion: nil)
-                }
-               
-            }
-            
-        }else {
-            let alert = UIAlertController(title: "Connection Error", message: "Please check your internet connection..!!", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-    }
-    
-    
+   
     @IBAction func editUserDidPressed(_ sender: Any) {
         userNameTxtF.becomeFirstResponder()
     }

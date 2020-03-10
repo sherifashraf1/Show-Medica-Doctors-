@@ -8,11 +8,8 @@
 
 import Foundation
 
-enum StaticAPIsKeys  : String {
-    case googleMaps = "AIzaSyBmv5y-2JM1wUOaqkZFaU4YlT4Z6_SCGVo"
-}
-
 enum StaticAPIsUrls : String {
     case apiRegisterUrl = "http://medicahealthy.net/api/auth-client/register"
     case apiLoginUrl = "http://medicahealthy.net/api/auth-client/login"
+    case  drsURl = "http://medicahealthy.net/api/institutions?lat=31.222229&lng=29.949358"
 }
