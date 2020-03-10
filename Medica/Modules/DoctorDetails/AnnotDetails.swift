@@ -12,7 +12,6 @@ class AnnotDetails: UIViewController {
     @IBOutlet weak var doctorName: UILabel!
     @IBOutlet weak var doctorAddress: UILabel!
     @IBOutlet weak var doctorCoord: UILabel!
-    
     var drName = ""
     var drAddres = ""
     var lat = 0.0
@@ -20,22 +19,17 @@ class AnnotDetails: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         doctorName.text = drName
         doctorAddress.text = drAddres
         doctorCoord.text = "\(lat) , \(lon)"
-        // Do any additional setup after loading the view.
         dragUpView()
         dragDownView()
     }
-
-    
     func dragUpView(){
         let slideUp = UISwipeGestureRecognizer(target: self, action: #selector(dragViewFromTop(gesture:)))
         slideUp.direction = .up
         view.addGestureRecognizer(slideUp)
     }
-    
     func dragDownView(){
         let slideDown = UISwipeGestureRecognizer(target: self, action: #selector(dragViewFromBottom(gesture:)))
         slideDown.direction = .down
@@ -58,7 +52,6 @@ class AnnotDetails: UIViewController {
         }
     }
     
-    
     @objc func dragViewFromTop(gesture: UISwipeGestureRecognizer) {
         if let window = UIApplication.shared.keyWindow { // keyWindow is the main window that receive an event , in this case it receive the gesture
             gesture.view?.frame = CGRect(x:window.frame.width  , y: window.frame.height  , width: 5 , height: 5)
@@ -74,7 +67,4 @@ class AnnotDetails: UIViewController {
             })
         }
     }
-    
-
-
 }

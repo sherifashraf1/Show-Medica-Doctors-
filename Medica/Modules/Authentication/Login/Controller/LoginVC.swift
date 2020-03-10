@@ -9,11 +9,9 @@
 import UIKit
 
 class LoginVC: UIViewController {
-
     @IBOutlet weak var phoneNumberTxtF: UITextField!
     @IBOutlet weak var passwordTxtF: UITextField!
     @IBOutlet weak var passBtn: UIButton!
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -34,17 +32,13 @@ class LoginVC: UIViewController {
             view.frame.origin.y = 0
             
         }
-        
     }
-    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         phoneNumberTxtF.text = ""
         passwordTxtF.text = ""
         NotificationCenter.default.removeObserver(self)
     }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         phoneNumberTxtF.setLeftImage(imageName: "phone-icon")
@@ -78,18 +72,14 @@ class LoginVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    
     @IBAction func resetPassFromHereDidPressed(_ sender: Any) {
-        
+        ///TODO
     }
-    
-    
+
     @IBAction func guestDidPressed(_ sender: Any) {
         
         let vc = MapFfactory.makeMapWithNavigate()
         present(vc, animated: true, completion: nil)
     }
-    
-    
-    
+
 }

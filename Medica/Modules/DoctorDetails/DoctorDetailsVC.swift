@@ -15,7 +15,6 @@ class DoctorDetailsVC: UIViewController {
     @IBOutlet weak var doctorDescription: UILabel!
     @IBOutlet weak var doctorSpeciality: UILabel!
     @IBOutlet weak var doctorPrice: UILabel!
-    
     var drName = ""
     var drAddress = ""
     var drInstitution = ""
@@ -32,9 +31,7 @@ class DoctorDetailsVC: UIViewController {
         doctorDescription.text = drDescription
         doctorSpeciality.text = drSpeciality
         doctorPrice.text = drPrice
-        
     }
-    
     
     func dragUpView(){
         let slideUp = UISwipeGestureRecognizer(target: self, action: #selector(dragViewFromTop(gesture:)))
@@ -64,7 +61,6 @@ class DoctorDetailsVC: UIViewController {
         }
     }
     
-    
     @objc func dragViewFromTop(gesture: UISwipeGestureRecognizer) {
         if let window = UIApplication.shared.keyWindow { // keyWindow is the main window that receive an event , in this case it receive the gesture
             gesture.view?.frame = CGRect(x:window.frame.width  , y: window.frame.height  , width: 5 , height: 5)
@@ -80,7 +76,4 @@ class DoctorDetailsVC: UIViewController {
             })
         }
     }
-    
-    
-
 }

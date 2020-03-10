@@ -31,9 +31,8 @@ class MapKitVC: UIViewController  {
     }
     
     @objc func showDrInListView(){
-        let vc = DoctorsFactoryView.makeMapWithNavigate()
+        let vc = DoctorsFactoryView.makeDoctorsLisWithNavigate()
         present(vc, animated: true, completion: nil)
-        
     }
     
     var doc:[MyAnnotation] = []
@@ -50,6 +49,11 @@ class MapKitVC: UIViewController  {
         loadData()
     }
     
+    func centerMapOnLoaction(location: CLLocation){
+        let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
     func showDoctors(){
         for doctor in doc {
             let annotation = MKPointAnnotation()
@@ -59,12 +63,7 @@ class MapKitVC: UIViewController  {
             mapView.addAnnotation(annotation)
         }
     }
-    
-    func centerMapOnLoaction(location: CLLocation){
-        let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
-        mapView.setRegion(coordinateRegion, animated: true)
-    }
-    
+ 
     func loadData() {
         let headers : HTTPHeaders = [
             "Content-Type" : "text/plain",
@@ -101,7 +100,6 @@ class MapKitVC: UIViewController  {
 }
 
 extension MapKitVC : MKMapViewDelegate {
-    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
             return nil
@@ -121,9 +119,7 @@ extension MapKitVC : MKMapViewDelegate {
         return pin
     }
     
-    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        
         let annotationView = view.annotation
         let vc = AnnotDetails()
         vc.drName = ((annotationView?.title!)!)

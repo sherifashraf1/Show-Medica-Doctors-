@@ -22,7 +22,7 @@
 		E00A974B240F1CFD0096900C /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00A9749240F1CFD0096900C /* RegisterVC.swift */; };
 		E00A974C240F1CFD0096900C /* RegisterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00A974A240F1CFD0096900C /* RegisterVC.xib */; };
 		E00A974E240F1D460096900C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E00A974D240F1D460096900C /* Media.xcassets */; };
-		E00A9750240F24BD0096900C /* Extension Button + TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00A974F240F24BD0096900C /* Extension Button + TextField.swift */; };
+		E00A9750240F24BD0096900C /* Button + TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00A974F240F24BD0096900C /* Button + TextField.swift */; };
 		E027EBB724106CDB00212B7E /* MyAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E027EBB624106CDB00212B7E /* MyAnnotation.swift */; };
 		E027EBBA24106E7A00212B7E /* MapKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E027EBB824106E7A00212B7E /* MapKitVC.swift */; };
 		E027EBBB24106E7A00212B7E /* MapKitVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E027EBB924106E7A00212B7E /* MapKitVC.xib */; };
@@ -61,7 +61,7 @@
 		E00A9749240F1CFD0096900C /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		E00A974A240F1CFD0096900C /* RegisterVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterVC.xib; sourceTree = "<group>"; };
 		E00A974D240F1D460096900C /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		E00A974F240F24BD0096900C /* Extension Button + TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension Button + TextField.swift"; sourceTree = "<group>"; };
+		E00A974F240F24BD0096900C /* Button + TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button + TextField.swift"; sourceTree = "<group>"; };
 		E027EBB624106CDB00212B7E /* MyAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnnotation.swift; sourceTree = "<group>"; };
 		E027EBB824106E7A00212B7E /* MapKitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitVC.swift; sourceTree = "<group>"; };
 		E027EBB924106E7A00212B7E /* MapKitVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapKitVC.xib; sourceTree = "<group>"; };
@@ -148,12 +148,11 @@
 		E00A9731240EF3220096900C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E00A9732240EF32C0096900C /* IntorToLogin */,
+				E034C89824183B87007E99FF /* Authentication */,
+				E027EBB524106CB000212B7E /* MapKit */,
 				E0FBA1D6241159CF00F50413 /* DoctorsList */,
 				E027EBC22410A7FA00212B7E /* DoctorDetails */,
-				E027EBB524106CB000212B7E /* MapKit */,
-				E00A9732240EF32C0096900C /* IntorToLogin */,
-				E00A9741240F01E60096900C /* Login */,
-				E00A9746240F02760096900C /* RegisterVC */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -179,7 +178,7 @@
 		E00A973E240EF9B80096900C /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
-				E00A974F240F24BD0096900C /* Extension Button + TextField.swift */,
+				E00A974F240F24BD0096900C /* Button + TextField.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -187,6 +186,7 @@
 		E00A9741240F01E60096900C /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				E0209A542411714300E6AE69 /* Factory */,
 				E0209A562411717600E6AE69 /* Controller */,
 				E00A9747240F02DE0096900C /* Media.xcassets */,
 			);
@@ -257,9 +257,9 @@
 		E027EBB524106CB000212B7E /* MapKit */ = {
 			isa = PBXGroup;
 			children = (
+				E0209A522411710F00E6AE69 /* Factory */,
 				E027EBD22410D1EA00212B7E /* Model */,
 				E0A5646124170DB40008560F /* View */,
-				E0209A542411714300E6AE69 /* Factory */,
 				E027EBD32410D1F600212B7E /* Controller */,
 				E027EBC92410BC9100212B7E /* Media.xcassets */,
 			);
@@ -295,6 +295,15 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		E034C89824183B87007E99FF /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				E00A9741240F01E60096900C /* Login */,
+				E00A9746240F02760096900C /* RegisterVC */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		E0A5646124170DB40008560F /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,7 +317,6 @@
 			children = (
 				E0FBA1DB24115D1800F50413 /* View */,
 				E0209A532411711E00E6AE69 /* Controller */,
-				E0209A522411710F00E6AE69 /* Factory */,
 			);
 			path = DoctorsList;
 			sourceTree = "<group>";
@@ -479,7 +487,7 @@
 				E0A5646024170A140008560F /* AnnotationView.swift in Sources */,
 				E0FBA1DE24115D3D00F50413 /* DoctorsTableViewCell.swift in Sources */,
 				E00A9735240EF3E70096900C /* IntroToLoginVC.swift in Sources */,
-				E00A9750240F24BD0096900C /* Extension Button + TextField.swift in Sources */,
+				E00A9750240F24BD0096900C /* Button + TextField.swift in Sources */,
 				E0FBA1D5241156E800F50413 /* MapFactory.swift in Sources */,
 				E0281A17240F7B060042C1A3 /* ApiUrl + Keys.swift in Sources */,
 				E00A9744240F02620096900C /* LoginVC.swift in Sources */,

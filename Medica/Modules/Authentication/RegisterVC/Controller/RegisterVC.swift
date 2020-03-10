@@ -31,7 +31,6 @@ class RegisterVC: UIViewController {
         confirmPasswordTxtF.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -72,7 +71,7 @@ class RegisterVC: UIViewController {
         passBtn.setImage(UIImage(named: "eye"), for: .selected)
         confirmPassBtn.setImage(UIImage(named: "eye"), for: .selected)
     }
-
+    
     @objc func textFieldDidChange(_ textField: UITextField){
         // if we start typing in the confirm password textfield
         guard let passwordTxtF = passwordTxtF.text else {return }
@@ -94,7 +93,7 @@ class RegisterVC: UIViewController {
     @IBAction func signUpDidPressed(_ sender: Any) {
         
         if userNameTxtF.text != "" && emailTxtF.text != "" && phoneNumberTxtF.text != "" && passwordTxtF.text != "" && confirmPasswordTxtF.text != "" {
-            //TODO call API
+            //TODO call Authentication API
             let vc = MapFfactory.makeMapWithNavigate()
             present(vc, animated: true, completion: nil)
             
@@ -104,10 +103,8 @@ class RegisterVC: UIViewController {
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)
         }
-        
     }
     
-   
     @IBAction func editUserDidPressed(_ sender: Any) {
         userNameTxtF.becomeFirstResponder()
     }
@@ -133,8 +130,6 @@ class RegisterVC: UIViewController {
         
     }
     
-    
-    
     @IBAction func backBtnDidPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -143,7 +138,6 @@ class RegisterVC: UIViewController {
         let vc = LoginVC()
         present(vc, animated: true, completion: nil)
     }
-    
     
 }
 

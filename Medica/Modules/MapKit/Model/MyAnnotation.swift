@@ -40,7 +40,4 @@ class MyAnnotation : NSObject , MKAnnotation {
         self.coordinate = coordinate
         super.init()
     }
-//    var subTitle : String? {
-//        return institution_title
-//    }
 }

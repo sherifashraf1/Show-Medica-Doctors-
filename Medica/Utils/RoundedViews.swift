@@ -6,9 +6,7 @@
 //  Copyright © 2020 Sherif. All rights reserved.
 //
 
-import Foundation
 import UIKit
-
 class  RoundedButton: UIButton {
     override func awakeFromNib() {
         super.awakeFromNib()

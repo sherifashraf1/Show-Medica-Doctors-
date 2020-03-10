@@ -9,12 +9,9 @@
 import UIKit
 
 class IntroToLoginVC: UIViewController {
-
     @IBOutlet weak var loginBtn: RoundedButton!
     @IBOutlet weak var signupBtn: RoundedButton!
-    
     @IBOutlet weak var medicaCardBtn: UIButton!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +19,7 @@ class IntroToLoginVC: UIViewController {
         signupBtn.moveImageLeftTextCenter(image: UIImage(named: "signup-icon")!, imagePadding: 30.0, renderingMode: .alwaysOriginal)
         medicaCardBtn.moveImageLeftTextCenter(image: UIImage(named: "medica")!, imagePadding: 30.0, renderingMode: .alwaysOriginal)
         medicaCardBtn.imageView?.tintColor = .white
-
+        
     }
     @IBAction func loginDidPressed(_ sender: Any) {
         let vc = LoginVC()
@@ -30,14 +27,10 @@ class IntroToLoginVC: UIViewController {
         
     }
     
-    
     @IBAction func signUpDidPressed(_ sender: Any) {
         let vc = RegisterVC()
         present(vc, animated: true, completion: nil)
         
     }
-    
-    
-    
     
 }

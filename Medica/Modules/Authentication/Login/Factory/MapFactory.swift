@@ -1,5 +1,5 @@
 //
-//  DoctorsFactoryView.swift
+//  MapFactory.swift
 //  Medica
 //
 //  Created by Sherif on 3/5/20.
@@ -7,12 +7,10 @@
 //
 
 import Foundation
-
-import Foundation
 import UIKit
-struct DoctorsFactoryView {
+struct MapFfactory {
     static func makeMapWithNavigate() -> UINavigationController{
-        let vc = DoctorsListTableVC()
+        let vc = MapKitVC()
         return UINavigationController(rootViewController: vc)
     }
 }

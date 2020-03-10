@@ -71,9 +71,8 @@ class DoctorsListTableVC: UITableViewController {
             , parameters: nil, encoding: JSONEncoding.default, headers: headers, interceptor: nil).responseJSON { (response) in
                 self.view.hideToastActivity()
                 do{
-                    let root = try JSONDecoder().decode(DoctorsModel.self, from: response.data!)
-                    
-                    for doctor in root.item.data{
+                    let doctors = try JSONDecoder().decode(DoctorsModel.self, from: response.data!)
+                    for doctor in doctors.item.data{
                         self.myDoctorsData.append(doctor)
                     }
                     self.tableView.reloadData()

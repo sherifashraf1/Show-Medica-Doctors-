@@ -20,26 +20,20 @@ extension UIButton {
         imageEdgeInsets = UIEdgeInsets(top: 0.0, left: imageLeft, bottom: 0.0, right: 0.0)
         titleEdgeInsets = UIEdgeInsets(top: 0.0, left: titleLeft , bottom: 0.0, right: 0.0)
     }
-    
 }
 
 extension UITextField{
-    
     func setLeftImage(imageName:String) {
-        
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         imageView.image = UIImage(named: imageName)
         self.leftView = imageView;
         self.leftViewMode = .always
     }
-    
     func setRightImage(imageName:String) {
-        
         let imageView = UIImageView(frame: CGRect(x: -5, y: -5, width: 25, height: 25))
         imageView.image = UIImage(named: imageName)
         self.rightView = imageView;
         self.rightViewMode = .always
     }
-    
 }
 

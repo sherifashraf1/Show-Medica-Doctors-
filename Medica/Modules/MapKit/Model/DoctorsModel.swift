@@ -13,13 +13,11 @@ struct DoctorsModel: Codable {
     let code: Int
     let message: String
     let item: ItemList
-
 }
 
 // MARK: - Item
 struct ItemList: Codable {
     let data: [ItemDatumList]
-
 }
 
 // MARK: - ItemDatum
@@ -34,5 +32,4 @@ struct ItemDatumList: Codable {
     let distance: Double
     let specialty, price, is_favorite: String
     let rate: Int
-   
 }
