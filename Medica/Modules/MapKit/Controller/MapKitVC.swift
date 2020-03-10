@@ -13,7 +13,7 @@ import Toast_Swift
 
 class MapKitVC: UIViewController  {
     var arrDoctorsData : [ItemDatumList] = []
-    var myAnnot = [MyAnnotation]()
+    var doc:[MyAnnotation] = []
     var initialLat:Double = 0.0
     var initialLng:Double = 0.0
     
@@ -35,7 +35,6 @@ class MapKitVC: UIViewController  {
         present(vc, animated: true, completion: nil)
     }
     
-    var doc:[MyAnnotation] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Map View"
