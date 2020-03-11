@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import Alamofire
 import Toast_Swift
+
 class DoctorsListTableVC: UITableViewController {
     
     var myDoctorsData : [ItemDatumList] = []

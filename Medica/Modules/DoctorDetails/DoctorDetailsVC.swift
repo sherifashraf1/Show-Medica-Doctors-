@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class DoctorDetailsVC: UIViewController {
     @IBOutlet weak var doctorName: UILabel!
     @IBOutlet weak var doctorAddress: UILabel!
@@ -21,16 +20,16 @@ class DoctorDetailsVC: UIViewController {
     var drDescription = ""
     var drSpeciality = ""
     var drPrice = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        dragUpView()
-        dragDownView()
         doctorName.text = drName
         doctorAddress.text = drAddress
         doctorInstitution.text = drInstitution
         doctorDescription.text = drDescription
         doctorSpeciality.text = drSpeciality
         doctorPrice.text = drPrice
+        dismissViewFromUp()
+        dismissViewFromDown()
     }
-  
 }

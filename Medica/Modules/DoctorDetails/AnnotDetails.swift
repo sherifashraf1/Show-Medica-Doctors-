@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class AnnotDetails: UIViewController {
     @IBOutlet weak var doctorName: UILabel!
     @IBOutlet weak var doctorAddress: UILabel!
@@ -22,8 +21,8 @@ class AnnotDetails: UIViewController {
         doctorName.text = drName
         doctorAddress.text = drAddres
         doctorCoord.text = "\(lat) , \(lon)"
-        dragUpView()
-        dragDownView()
+        dismissViewFromUp()
+        dismissViewFromDown()
     }
 }
 
