@@ -72,8 +72,10 @@ class DoctorsListTableVC: UITableViewController {
         AF.request(StaticAPIsUrls.drsURl.rawValue, method: .get
             , parameters: params, encoding: URLEncoding.default, headers: headers, interceptor: nil).responseJSON { (response) in
                 self.view.hideToastActivity()
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
                 do{
-                    let doctors = try JSONDecoder().decode(DoctorsModel.self, from: response.data!)
+                    let doctors = try decoder.decode(DoctorsModel.self, from: response.data!)
                     for doctor in doctors.item.data{
                         self.myDoctorsData.append(doctor)
                     }

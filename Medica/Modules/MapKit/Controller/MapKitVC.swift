@@ -79,8 +79,10 @@ class MapKitVC: UIViewController  {
         AF.request(StaticAPIsUrls.drsURl.rawValue, method: .get
             , parameters: params, encoding: URLEncoding.default, headers: headers, interceptor: nil).responseJSON { (response) in
                 self.view.hideToastActivity()
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
                 do{
-                    let doctorDetail = try JSONDecoder().decode(DoctorsModel.self, from: response.data!)
+                    let doctorDetail = try decoder.decode(DoctorsModel.self, from: response.data!)
                     self.view.hideToastActivity()
                     for doctor in doctorDetail.item.data{
                         self.arrDoctorsData.append(doctor)

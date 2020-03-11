@@ -22,9 +22,9 @@ struct ItemList: Codable {
 
 // MARK: - ItemDatum
 struct ItemDatumList: Codable {
-    let branchID: Int
-    let encodeBranchID: String
-    let institutionID: Int
+    let branchId: Int
+    let encodeBranchId: String
+    let institutionId: Int
     let title, institutionTitle, description, address: String
     let lat, lng: String
     let image: String
@@ -32,14 +32,5 @@ struct ItemDatumList: Codable {
     let distance: Double
     let specialty, price, isFavorite: String
     let rate: Int
-    
-    enum CodingKeys: String, CodingKey {
-        case branchID = "branch_id"
-        case encodeBranchID = "encode_branch_id"
-        case institutionID = "institution_id"
-        case institutionTitle = "institution_title"
-        case title, description, address, lat, lng, image, type, distance, specialty, price, rate
-        case isFavorite = "is_favorite"
-    }
 
 }
