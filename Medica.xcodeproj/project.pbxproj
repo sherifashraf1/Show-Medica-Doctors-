@@ -34,6 +34,7 @@
 		E0A5646024170A140008560F /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A5645F24170A140008560F /* AnnotationView.swift */; };
 		E0A56468241730230008560F /* AnnotDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A56466241730230008560F /* AnnotDetails.swift */; };
 		E0A56469241730230008560F /* AnnotDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A56467241730230008560F /* AnnotDetails.xib */; };
+		E0D9A8922418893100A11AEA /* DragUpAndDownView + GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D9A8912418893100A11AEA /* DragUpAndDownView + GestureRecognizer.swift */; };
 		E0FBA1D5241156E800F50413 /* MapFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FBA1D4241156E800F50413 /* MapFactory.swift */; };
 		E0FBA1D924115A0500F50413 /* DoctorsListTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FBA1D724115A0500F50413 /* DoctorsListTableVC.swift */; };
 		E0FBA1DA24115A0500F50413 /* DoctorsListTableVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0FBA1D824115A0500F50413 /* DoctorsListTableVC.xib */; };
@@ -73,6 +74,7 @@
 		E0A5645F24170A140008560F /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		E0A56466241730230008560F /* AnnotDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotDetails.swift; sourceTree = "<group>"; };
 		E0A56467241730230008560F /* AnnotDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnotDetails.xib; sourceTree = "<group>"; };
+		E0D9A8912418893100A11AEA /* DragUpAndDownView + GestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DragUpAndDownView + GestureRecognizer.swift"; sourceTree = "<group>"; };
 		E0F25A7B2417CB0200221F22 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0F25A7D2417CB0200221F22 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0FBA1D4241156E800F50413 /* MapFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFactory.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				E00A974F240F24BD0096900C /* Button + TextField.swift */,
+				E0D9A8912418893100A11AEA /* DragUpAndDownView + GestureRecognizer.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				E00A971E240EF2B10096900C /* AppDelegate.swift in Sources */,
 				E00A974B240F1CFD0096900C /* RegisterVC.swift in Sources */,
 				E0A56468241730230008560F /* AnnotDetails.swift in Sources */,
+				E0D9A8922418893100A11AEA /* DragUpAndDownView + GestureRecognizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
