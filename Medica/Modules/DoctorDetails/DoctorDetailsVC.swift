@@ -14,6 +14,7 @@ class DoctorDetailsVC: UIViewController {
     @IBOutlet weak var doctorDescription: UILabel!
     @IBOutlet weak var doctorSpeciality: UILabel!
     @IBOutlet weak var doctorPrice: UILabel!
+    
     var drName = ""
     var drAddress = ""
     var drInstitution = ""

@@ -22,13 +22,23 @@ class DoctorsListTableVC: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    func refreshDoctors(){
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        tableView.addSubview(refreshControl!)
+    }
+    
+    @objc func handleRefresh(_ sender : Any){
+        refreshControl?.endRefreshing()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Doctors List"
         navigationItem.setLeftBarButton(hideNavButton, animated: true)
-        let cell = UINib(nibName: "DoctorsTableViewCell", bundle: nil)
-        tableView.register(cell.self, forCellReuseIdentifier: "UITabelViewCell")
+        tableView.registerNib(cell: DoctorsTableViewCell.self)
         loadData()
+        refreshDoctors()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,8 +46,9 @@ class DoctorsListTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UITabelViewCell", for: indexPath) as! DoctorsTableViewCell
-        cell.drName.text = myDoctorsData[indexPath.row].title
+        let myDoctorData = myDoctorsData[indexPath.row]
+        let cell = tableView.dequeue() as DoctorsTableViewCell
+        cell.recieveDoctorInfo(type: .drName, text: myDoctorData.title)
         return cell
     }
     
@@ -58,20 +69,9 @@ class DoctorsListTableVC: UITableViewController {
     }
     
     func loadData() {
-        let params : [String : String] = [
-            "lat" : "31.222229",
-            "lng" : "29.949358"
-        ]
-        let headers : HTTPHeaders = [
-            "Content-Type" : "text/plain",
-            "Accept" : "application/json",
-            "From"   : "c213348c8e34e7dd",
-            "User-Agent" : "android",
-            "Accept-Language" : "en"
-        ]
         self.view.makeToastActivity(.center)
-        AF.request(StaticAPIsUrls.drsURl.rawValue, method: .get
-            , parameters: params, encoding: URLEncoding.default, headers: headers, interceptor: nil).responseJSON { (response) in
+        AF.request(MyURL.drsUrl, method: .get
+            , parameters: MyURL.params, encoding: URLEncoding.default, headers: MyURL.headers, interceptor: nil).responseJSON { (response) in
                 self.view.hideToastActivity()
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase

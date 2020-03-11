@@ -64,20 +64,9 @@ class MapKitVC: UIViewController  {
     }
  
     func loadData() {
-        let params : [String : String] = [
-            "lat" : "31.222229",
-            "lng" : "29.949358"
-        ]
-        let headers : HTTPHeaders = [
-            "Content-Type" : "text/plain",
-            "Accept" : "application/json",
-            "From"   : "c213348c8e34e7dd",
-            "User-Agent" : "android",
-            "Accept-Language" : "en"
-        ]
         self.view.makeToastActivity(.center)
-        AF.request(StaticAPIsUrls.drsURl.rawValue, method: .get
-            , parameters: params, encoding: URLEncoding.default, headers: headers, interceptor: nil).responseJSON { (response) in
+        AF.request(MyURL.drsUrl, method: .get
+            , parameters: MyURL.params, encoding: URLEncoding.default, headers: MyURL.headers, interceptor: nil).responseJSON { (response) in
                 self.view.hideToastActivity()
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase

@@ -11,6 +11,7 @@ class AnnotDetails: UIViewController {
     @IBOutlet weak var doctorName: UILabel!
     @IBOutlet weak var doctorAddress: UILabel!
     @IBOutlet weak var doctorCoord: UILabel!
+    
     var drName = ""
     var drAddres = ""
     var lat = 0.0

@@ -30,10 +30,11 @@
 		E027EBC52410A82900212B7E /* DoctorDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E027EBC32410A82900212B7E /* DoctorDetailsVC.swift */; };
 		E027EBC62410A82900212B7E /* DoctorDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E027EBC42410A82900212B7E /* DoctorDetailsVC.xib */; };
 		E027EBCA2410BC9100212B7E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E027EBC92410BC9100212B7E /* Media.xcassets */; };
-		E0281A17240F7B060042C1A3 /* ApiUrl + Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0281A16240F7B060042C1A3 /* ApiUrl + Keys.swift */; };
+		E0281A17240F7B060042C1A3 /* ApiUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0281A16240F7B060042C1A3 /* ApiUrl.swift */; };
 		E0A5646024170A140008560F /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A5645F24170A140008560F /* AnnotationView.swift */; };
 		E0A56468241730230008560F /* AnnotDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A56466241730230008560F /* AnnotDetails.swift */; };
 		E0A56469241730230008560F /* AnnotDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A56467241730230008560F /* AnnotDetails.xib */; };
+		E0CA35DE2419340E00594C70 /* TableViewCell + NibRegisteration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CA35DD2419340E00594C70 /* TableViewCell + NibRegisteration.swift */; };
 		E0D9A8922418893100A11AEA /* DragUpAndDownView + GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D9A8912418893100A11AEA /* DragUpAndDownView + GestureRecognizer.swift */; };
 		E0FBA1D5241156E800F50413 /* MapFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FBA1D4241156E800F50413 /* MapFactory.swift */; };
 		E0FBA1D924115A0500F50413 /* DoctorsListTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FBA1D724115A0500F50413 /* DoctorsListTableVC.swift */; };
@@ -70,10 +71,11 @@
 		E027EBC32410A82900212B7E /* DoctorDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailsVC.swift; sourceTree = "<group>"; };
 		E027EBC42410A82900212B7E /* DoctorDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoctorDetailsVC.xib; sourceTree = "<group>"; };
 		E027EBC92410BC9100212B7E /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		E0281A16240F7B060042C1A3 /* ApiUrl + Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiUrl + Keys.swift"; sourceTree = "<group>"; };
+		E0281A16240F7B060042C1A3 /* ApiUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUrl.swift; sourceTree = "<group>"; };
 		E0A5645F24170A140008560F /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		E0A56466241730230008560F /* AnnotDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotDetails.swift; sourceTree = "<group>"; };
 		E0A56467241730230008560F /* AnnotDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnotDetails.xib; sourceTree = "<group>"; };
+		E0CA35DD2419340E00594C70 /* TableViewCell + NibRegisteration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell + NibRegisteration.swift"; sourceTree = "<group>"; };
 		E0D9A8912418893100A11AEA /* DragUpAndDownView + GestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DragUpAndDownView + GestureRecognizer.swift"; sourceTree = "<group>"; };
 		E0F25A7B2417CB0200221F22 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0F25A7D2417CB0200221F22 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,7 +144,7 @@
 				E00A9724240EF2B20096900C /* Assets.xcassets */,
 				E00A9726240EF2B20096900C /* LaunchScreen.storyboard */,
 				E00A9729240EF2B20096900C /* Info.plist */,
-				E0281A16240F7B060042C1A3 /* ApiUrl + Keys.swift */,
+				E0281A16240F7B060042C1A3 /* ApiUrl.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				E00A974F240F24BD0096900C /* Button + TextField.swift */,
+				E0CA35DD2419340E00594C70 /* TableViewCell + NibRegisteration.swift */,
 				E0D9A8912418893100A11AEA /* DragUpAndDownView + GestureRecognizer.swift */,
 			);
 			path = Extentions;
@@ -487,12 +490,13 @@
 				E0FBA1E12411664800F50413 /* DoctorsFactoryView.swift in Sources */,
 				E027EBB724106CDB00212B7E /* MyAnnotation.swift in Sources */,
 				E00A973D240EF6FC0096900C /* RoundedViews.swift in Sources */,
+				E0CA35DE2419340E00594C70 /* TableViewCell + NibRegisteration.swift in Sources */,
 				E0A5646024170A140008560F /* AnnotationView.swift in Sources */,
 				E0FBA1DE24115D3D00F50413 /* DoctorsTableViewCell.swift in Sources */,
 				E00A9735240EF3E70096900C /* IntroToLoginVC.swift in Sources */,
 				E00A9750240F24BD0096900C /* Button + TextField.swift in Sources */,
 				E0FBA1D5241156E800F50413 /* MapFactory.swift in Sources */,
-				E0281A17240F7B060042C1A3 /* ApiUrl + Keys.swift in Sources */,
+				E0281A17240F7B060042C1A3 /* ApiUrl.swift in Sources */,
 				E00A9744240F02620096900C /* LoginVC.swift in Sources */,
 				E00A971E240EF2B10096900C /* AppDelegate.swift in Sources */,
 				E00A974B240F1CFD0096900C /* RegisterVC.swift in Sources */,
