@@ -70,8 +70,8 @@ class DoctorsListTableVC: UITableViewController {
     
     func loadData() {
         self.view.makeToastActivity(.center)
-        AF.request(MyURL.drsUrl, method: .get
-            , parameters: MyURL.params, encoding: URLEncoding.default, headers: MyURL.headers, interceptor: nil).responseJSON { (response) in
+        AF.request(MedicaURL.drsUrl, method: .get
+            , parameters: MedicaURL.drsUrlParams, encoding: URLEncoding.default, headers: MedicaURL.drsUrlHeaders, interceptor: nil).responseJSON { (response) in
                 self.view.hideToastActivity()
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
